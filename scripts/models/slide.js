@@ -1,44 +1,22 @@
 define([
-	'backbone'
-], function(Backbone){
+	'backbone',
+	'models/image'
+], function(Backbone, Image){
 
 	var Slide = Backbone.Model.extend({
-		defaults: function(){
-			return {
-				url: '',
-				image_url: '',
-				device: null,
-				os: '',
-				created_at: '',
-				id: '',
-				state: '',
-				os_version: '',
-				thumb_url: '',
-				orientation: null,
-				browser: '',
-				browser_version: ''
-			}; 
+		defaults: {
+			summary = null;	//	Slides' don't need a summary
 		},
 
 		initialize: function(options){
-			this.url = options.url;
-			this.image_url = options.image_url;
-			this.device = options.device;
-			this.os = options.os;
-			this.created_at = options.created_at;
-			this.id = options.id;
-			this.state = options.state;
-			this.os_version = options.os_version;
-			this.thumb_url = options.thumb_url;
-			this.orientation = options.orientation;
-			this.browser = options.browser;
-			this.browser_version = options.browser_version;
+			this.slide_id = options.slide_id;
+			//this.story_id = options.story_id;
+			this.slide_type = options.slide_type;
+			this.summary = options.summary;
 		},
 
-		idAttribute: "_id",
+		idAttribute: "slide_id",
 
 	});
-
 	return Slide;
-
 });

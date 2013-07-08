@@ -3,39 +3,28 @@ define([
 ], function(Backbone){
 
 	var Story = Backbone.Model.extend({
-		defaults: function(){
-			return {
-				url: '',
-				image_url: '',
-				device: null,
-				os: '',
-				created_at: '',
-				id: '',
-				state: '',
-				os_version: '',
-				thumb_url: '',
-				orientation: null,
-				browser: '',
-				browser_version: ''
-			}; 
+		defaults: {
+			tags = null;
 		},
 
 		initialize: function(options){
-			this.url = options.url;
-			this.image_url = options.image_url;
-			this.device = options.device;
-			this.os = options.os;
-			this.created_at = options.created_at;
-			this.id = options.id;
-			this.state = options.state;
-			this.os_version = options.os_version;
-			this.thumb_url = options.thumb_url;
-			this.orientation = options.orientation;
-			this.browser = options.browser;
-			this.browser_version = options.browser_version;
+			this._id 				= options.story_id;
+			this.headline 			= options.headline;
+			this.authorFirstName 	= options.authorFirstName;
+			this.authorLastName		= options.authorLastName;
+			populate_tags(options.tags);	//	Get an array of tags
+
 		},
 
-		idAttribute: "_id",
+		add_tags: function(tagArray){
+			var arr = new Array();
+			for(var i = 0; i < tagArray.length; i++){
+				arr[i] = tagArray[i];
+			}
+			this.set({ tags:arr });
+		}
+
+		idAttribute: "story_id",
 
 	});
 

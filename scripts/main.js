@@ -10,7 +10,7 @@ requirejs.config({
         },
         'jquery': {
             exports: 'jquery'
-        }
+        }  d
     },
     paths: {
         'backbone': 'lib/backbone',
@@ -19,7 +19,14 @@ requirejs.config({
     }
 })
 
-requirejs(['collections/stories', 'collections/story', 'models/story', 'models/slide', 'views/slideView', 'views/storylist', 'views/storyListItem','views/storyView' ],
+requirejs(['collections/stories',
+ 'collections/story',
+  'models/story',
+   'models/slide',
+    'views/slideView',
+     'views/storylist',
+      'views/storyListItem',
+      'views/storyView' ],
 function(StoriesCollection, StoryCollection, StoryModel, SlideModel, SlideView, StoryListView, StoryListItemView, StoryView){
     var AppRouter = Backbone.Router.extend({
         routes: {
