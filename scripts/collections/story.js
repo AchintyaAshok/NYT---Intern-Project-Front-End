@@ -1,4 +1,4 @@
-define([
+ define([
 	'backbone',
 	'models/slide'
 ], function(Backbone, Slide){
