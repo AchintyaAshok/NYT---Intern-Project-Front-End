@@ -42,7 +42,7 @@ function(StoryListCollection, StoryCollection, StoryModel, SlideModel, SlideView
                     for(var r = 0, l = response.length; r<l; r++){
                         var m = new StoryModel(response[r]);
                         storyListCollection.add(m);
-                        console.log(storyListCollection);
+                        //console.log(storyListCollection);
                     }
                     var storyList = new StoryListView({collection: storyListCollection});
                 }

@@ -7,12 +7,12 @@ define([
 
 		tagName: 'li',
 
-		template: _.template('<div class="story-item"><a><%= title %> by <%= author %></a><p> tags: <%= tags %></p></div>'),
+		template: _.template('<h2><%= headline %></h2> by <%= authorFirstName %> <%= authorLastName %>'),
 
 
 		initialize: function(){
-			this.model.bind("change", this.render, this);
-			this.model.bind("destroy", this.close, this);
+			//this.model.bind("change", this.render, this);
+			//this.model.bind("destroy", this.close, this);
 		},
 
 		render: function(){

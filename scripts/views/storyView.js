@@ -6,13 +6,11 @@ define([
 
 	var StoryListView = Backbone.View.extend({
 		id: 'story',
-
 		tagname: 'ul',
 
 		initialize: function(){
 			this.render();
 		},
-
 
 		render: function(){
 			// var slides = this.collection.models;
