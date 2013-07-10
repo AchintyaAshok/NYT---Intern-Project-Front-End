@@ -1,7 +1,7 @@
 define([
 	'backbone',
 	'views/storyView',
-	'collections/stories'
+	'collections/storylist'
 ], function(Backbone, StoryListItemView, Batch){
 
 	var StoryListView = Backbone.View.extend({
@@ -16,7 +16,7 @@ define([
 
 		render: function(){
 			var stories = this.collection.models;
-			var l = screenshots.length;
+			var l = stories.length;
 			for(var i = 0; i< l; i++){
 				var storyListItem = new StoryListItemView({model: stories[i]}).render();
 				this.$el.append(sc.el);
