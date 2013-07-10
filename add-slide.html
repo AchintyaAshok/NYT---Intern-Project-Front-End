@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta name ="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<title>Olympic Stories Admin</title>
+</head>
+<body>
+    <div class="container">
+        <form class="form-horizontal">
+            <fieldset>
+            <legend>Add Slide to Story</legend>
+            <div class="control-group">
+                <label class="control-label" for="input01">Title</label>
+                <div class="controls">
+                    <input type="text" class="input-xlarge" id="input01"></input>
+                    <p class="help-block">Enter new slide's title</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="select01">Slide type</label>
+                <div class="controls">
+                    <select id="select01">
+                        <option>Regular</option>
+                        <option>Comparison</option>
+                        <option>Scrubber</option>
+                        <option>Collage</option>
+                    </select>
+                </div>
+            </div>
+
+            <!--<div class="fileupload fileupload-new" dataprovides="file-upload">
+                <div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;"></div>
+                <label class="control-label" for="fileInput">Upload image</label>
+                <div>
+                    <span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input type="file" /></span>
+                    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                </div>
+            </div> -->
+
+            <div class="control-group">  
+                <label class="control-label" for="fileInput">File input</label>  
+                <div class="controls">  
+                    <input class="input-file" id="fileInput" type="file">  
+                </div>  
+            </div>  
+
+            <div class="control-group">  
+                <label class="control-label" for="textarea">Caption</label>
+                <div class="controls">  
+                    <textarea class="input-xlarge" id="textarea" rows="3"></textarea>  
+                </div>  
+            </div>  
+            </fieldset>
+        </form>
+    </div>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
