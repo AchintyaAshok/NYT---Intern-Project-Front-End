@@ -1,27 +1,23 @@
 define([
 	'backbone',
+	'underscore',
 	'views/slideView',
-	'collections/story'
-], function(Backbone, SlideView, Story){
+	'collections/story',
+	'templates/storyView'
+], function(Backbone,_, SlideView, Story, StoryViewTemplate){
 
 	var StoryListView = Backbone.View.extend({
 		id: 'story',
 		tagname: 'ul',
+		template: _.template(StoryViewTemplate),
 
 		initialize: function(){
 			this.render();
 		},
 
 		render: function(){
-			// var slides = this.collection.models;
-			// var l = slides.length;
-			// for(var i = 0; i< l; i++){
-			// 	var sc = new SlideView({model: slides[i]}).render();
-			// 	this.$el.append(sc.el);
-			// }
-			// console.log(this);
-			// $("#content").html(this.el);
-			// return this;
+			this.$el.html(this.template());//this.model.toJSON()));
+			$("#content").html(this.el);
 		}
 	});
 

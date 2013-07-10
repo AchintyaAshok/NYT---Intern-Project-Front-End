@@ -1,7 +1,7 @@
 define([
 	'backbone',
 	'underscore',
-	'text!templates/template.html'
+	'templates/template'
 ], function(Backbone, _, Template){
 
 	var StoryListItemView = Backbone.View.extend({
@@ -12,6 +12,7 @@ define([
 
 
 		initialize: function(){
+			console.log(Template);
 			//this.model.bind("change", this.render, this);
 			//this.model.bind("destroy", this.close, this);
 		},

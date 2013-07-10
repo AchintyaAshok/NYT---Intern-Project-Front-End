@@ -24,7 +24,8 @@ function(StoryListCollection, StoryCollection, StoryModel, SlideModel, SlideView
     var AppRouter = Backbone.Router.extend({
         routes: {
             "" : "home",
-            "story/:id": "story"
+            "story/:id": "story",
+            "testStoryView": "testStoryView",
         },
 
         // initialize: function(){
@@ -45,9 +46,15 @@ function(StoryListCollection, StoryCollection, StoryModel, SlideModel, SlideView
                         //console.log(storyListCollection);
                     }
                     var storyList = new StoryListView({collection: storyListCollection});
+
                 }
             });
             
+        },
+
+        testStoryView: function(){
+            
+            var storyView = new StoryView(collection: story);
         }
     });
     app = new AppRouter();

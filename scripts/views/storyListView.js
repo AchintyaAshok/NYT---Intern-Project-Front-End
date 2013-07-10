@@ -21,7 +21,6 @@ define([
 				console.log(stories);
 				//console.log(stories[i]);
 				var storyListItem = new StoryListItemView({model: stories[i]}).render();
-				console.log('hi');
 				this.$el.append(storyListItem.el);
 			}
 			console.log(this);
