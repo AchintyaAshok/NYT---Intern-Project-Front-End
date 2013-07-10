@@ -1,13 +1,14 @@
 define([
 	'backbone',
-	'underscore'
-], function(Backbone, _){
+	'underscore',
+	'text!templates/template.html'
+], function(Backbone, _, Template){
 
 	var StoryListItemView = Backbone.View.extend({
 
 		tagName: 'li',
 
-		template: _.template('<h2><%= headline %></h2> by <%= authorFirstName %> <%= authorLastName %>'),
+		template: _.template(Template),//'<h2><%= headline %></h2> by <%= authorFirstName %> <%= authorLastName %>'),
 
 
 		initialize: function(){
