@@ -5,7 +5,7 @@ define([
 
 	var Slide = Backbone.Model.extend({
 		defaults: {
-			summary = null;	//	Slides' don't need a summary
+			"tags" : null
 		},
 
 		initialize: function(options){

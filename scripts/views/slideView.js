@@ -8,7 +8,7 @@ define([
 
 		tagname: 'div',
 
-		template: _.template('<div class="story-item"><a><%= title %> </a><p>tags: <%= tags %></p></div>'),
+		template: _.template('hihi'),
 
 		initialize: function(){
 			this.render();

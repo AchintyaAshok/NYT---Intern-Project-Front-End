@@ -4,7 +4,8 @@ define([
 
 	var Story = Backbone.Model.extend({
 		defaults: {
-			tags = null;
+			"authorFirstName" : "Ari",
+			"authorLastName" : "Vogel"
 		},
 
 		initialize: function(options){
@@ -12,7 +13,7 @@ define([
 			this.headline 			= options.headline;
 			this.authorFirstName 	= options.authorFirstName;
 			this.authorLastName		= options.authorLastName;
-			populate_tags(options.tags);	//	Get an array of tags
+			//add_tags(options.tags);	//	Get an array of tags
 
 		},
 
@@ -22,9 +23,9 @@ define([
 				arr[i] = tagArray[i];
 			}
 			this.set({ tags:arr });
-		}
+		},
 
-		idAttribute: "story_id",
+		idAttribute: "story_id"
 
 	});
 

@@ -10,7 +10,7 @@ requirejs.config({
         },
         'jquery': {
             exports: 'jquery'
-        }  d
+        }
     },
     paths: {
         'backbone': 'lib/backbone',
@@ -19,15 +19,8 @@ requirejs.config({
     }
 })
 
-requirejs(['collections/stories',
- 'collections/story',
-  'models/story',
-   'models/slide',
-    'views/slideView',
-     'views/storylist',
-      'views/storyListItem',
-      'views/storyView' ],
-function(StoriesCollection, StoryCollection, StoryModel, SlideModel, SlideView, StoryListView, StoryListItemView, StoryView){
+requirejs(['collections/storylist', 'collections/story', 'models/story', 'models/slide', 'views/slideView', 'views/storyListView', 'views/storyListItemView','views/storyView' ],
+function(StoryListCollection, StoryCollection, StoryModel, SlideModel, SlideView, StoryListView, StoryListItemView, StoryView){
     var AppRouter = Backbone.Router.extend({
         routes: {
             "" : "home",
@@ -39,8 +32,8 @@ function(StoriesCollection, StoryCollection, StoryModel, SlideModel, SlideView, 
         // },
 
         home: function(){
-            var storiesCollection = new StoriesCollection();
-            storiesCollection.fetch({
+            var storyListCollection = new StoryListCollection();
+            storyListCollection.fetch({
                 error: function(collection, response){
                     console.log('error', response);
                 },
@@ -48,9 +41,10 @@ function(StoriesCollection, StoryCollection, StoryModel, SlideModel, SlideView, 
                 success: function(collection, response){
                     for(var r = 0, l = response.length; r<l; r++){
                         var m = new StoryModel(response[r]);
-                        storiesCollection.add(m);
+                        storyListCollection.add(m);
+                        //console.log(storyListCollection);
                     }
-                    var storyList = new StoryListView({collection: storiesCollection});
+                    var storyList = new StoryListView({collection: storyListCollection});
                 }
             });
             
