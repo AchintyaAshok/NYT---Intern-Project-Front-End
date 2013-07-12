@@ -19,8 +19,8 @@ requirejs.config({
     }
 })
 
-requirejs(['collections/storylist', 'collections/story', 'models/story', 'models/slide', 'views/slideView', 'views/storyListView', 'views/storyListItemView','views/storyView' ],
-function(StoryListCollection, StoryCollection, StoryModel, SlideModel, SlideView, StoryListView, StoryListItemView, StoryView){
+requirejs(['collections/storyCollection', 'collections/slideCollection', 'models/story', 'models/slide', 'views/slideView', 'views/storyListView', 'views/storyListItemView','views/storyView', 'views/pageView' ],
+function(StoryListCollection, Story, StoryModel, SlideModel, SlideView, StoryListView, StoryListItemView, StoryView, PageView){
     var AppRouter = Backbone.Router.extend({
         routes: {
             "" : "home",
@@ -41,8 +41,8 @@ function(StoryListCollection, StoryCollection, StoryModel, SlideModel, SlideView
 
                 success: function(collection, response){
                     for(var r = 0, l = response.length; r<l; r++){
-                        var m = new StoryModel(response[r]);
-                        storyListCollection.add(m);
+                        var m = new StoryModel(response[r]);    //  for each element in the response, you create a story based off of the story model 
+                        storyListCollection.add(m);             //  add each new model to the collection 
                         //console.log(storyListCollection);
                     }
                     var storyList = new StoryListView({collection: storyListCollection});
@@ -53,8 +53,22 @@ function(StoryListCollection, StoryCollection, StoryModel, SlideModel, SlideView
         },
 
         testStoryView: function(){
-            
+            var story = new Story();
+            var pageView = new PageView();
             var storyView = new StoryView(collection: story);
+            story.fetch({
+                error: function(collection, response){
+                    console.log('error', response);
+                },
+
+                success: function(collection, response){
+                    for(var r = 0, l = response.length; r<l;r++){
+                        var model = new SlideModel(response[r]);
+                        story.add(model);
+                    }
+                    storyView.render(story);
+                }
+            })
         }
     });
     app = new AppRouter();

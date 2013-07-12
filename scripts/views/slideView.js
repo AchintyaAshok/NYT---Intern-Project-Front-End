@@ -1,6 +1,6 @@
 define([
 	'backbone',
-	'collections/story'
+	'collections/slideCollection'
 ], function(Backbone, Story){
 
 	var SlideView = Backbone.View.extend({

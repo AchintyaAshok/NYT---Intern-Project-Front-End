@@ -1,3 +1,6 @@
+/*
+	This is the Story Model, it contains information of what a story object should have.
+*/
 define([
 	'backbone'
 ], function(Backbone){
