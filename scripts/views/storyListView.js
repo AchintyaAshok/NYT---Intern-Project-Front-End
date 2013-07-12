@@ -15,6 +15,7 @@ define([
 		tagname: 'ul',
 
 		initialize: function(){
+			var self = this;
 			//var collectionOfStoryListView = this.collection;
 			var storyCollection = new StoryCollection();
 			storyCollection.fetch({
@@ -23,15 +24,19 @@ define([
 			    },
 
 			    success: function(collection, response){
-			    	console.log('success!');
+			    	for(var i = 0; i < storyCollection.length; i++){
+			    		//console.log(storyCollection.models[i]);
+			    		var storyListItemDOM  = new StoryListItemView(storyCollection.models[i]).render();
+			    		console.log(self);
+			    		self.$el.append(storyListItemDOM);	//	Add each new dom to the list dom
+
+			    	}
+			    	self.render();
 			    }
 			});
-			for(var i = 0; i < storyCollection.models.length; i++){
-				var storyListItemDOM  = new StoryListItemView({storyCollection.models[i]}).render();
-				this.$el.append(storyListItemDOM);	//	Add each new dom to the list dom
-
-			}
-			this.render();
+			// console.log(storyCollection);
+			// console.log(storyCollection.models.length);
+			
 		},
 
 
@@ -46,7 +51,8 @@ define([
 
 			// }
 			// console.log(this);
-			$("#page").html(this.el);				//	Finally, draw the StoryListView on the page
+			console.log(this.el);
+			$("#content").html(this.el);				//	Finally, draw the StoryListView on the page
 			return this;
 		},
 

@@ -14,7 +14,7 @@ define([
 	var StoryView = Backbone.View.extend({
 		id: 'story',
 		tagname: 'ul',
-		template: _.template(StoryViewTemplate),
+		template: _.template("testing!! <%= story_id %>"),//StoryViewTemplate),
 
 		initialize: function(){
 			this.render();

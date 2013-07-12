@@ -14,8 +14,8 @@ define([
 		initialize: function(options){
 			this._id 				= options.story_id;
 			this.headline 			= options.headline;
-			this.authorFirstName 	= options.authorFirstName;
-			this.authorLastName		= options.authorLastName;
+			this.author 	= options.author;
+			// this.author		= options.authorLastName;
 			//add_tags(options.tags);	//	Get an array of tags
 
 		},

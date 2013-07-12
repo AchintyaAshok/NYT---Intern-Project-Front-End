@@ -12,19 +12,20 @@ define([
 
 		tagName: 'li',
 
-		template: _.template(Template),//'<h2><%= headline %></h2> by <%= authorFirstName %> <%= authorLastName %>'),
+		template: _.template('hi hi hi <%= headline %>'),//Template),//'<h2><%= headline %></h2> by <%= authorFirstName %> <%= authorLastName %>'),
 
 		attributes: {"class":"storyListItem"},	//	Append this class to each Story List Item so we can reference it later
 
 
 		initialize: function(){
-			console.log(Template);
+			//console.log(Template);
 			//this.model.bind("change", this.render, this);
 			//this.model.bind("destroy", this.close, this);
 		},
 
 		render: function(){
-			this.$el.html(this.template(this.model.toJSON()));
+			console.log(this.attributes);
+			this.$el.html(this.template(this.attributes));
 			return this.$el; // return the DOM
 		},
 

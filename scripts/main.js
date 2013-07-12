@@ -55,7 +55,7 @@ function(StoryListCollection, Story, StoryModel, SlideModel, SlideView, StoryLis
         testStoryView: function(){
             var story = new Story();
             var pageView = new PageView();
-            var storyView = new StoryView(collection: story);
+            var storyView = new StoryView({collection: story});
             story.fetch({
                 error: function(collection, response){
                     console.log('error', response);

@@ -7,22 +7,24 @@ define([
 	'collections/slideCollection'
 ],
 function(StoryView, StoryCollection){
-	tagName:'div',
-	
-	id: 'page',
+	var PageView = Backbone.View.extend({
+		tagName: 'div',
+		
+		id: 'page',
 
-	events:{
-		"click .storyListItem" : "view_story"
-	},
+		events:{
+			"click .storyListItem" : "view_story"
+		},
 
-	render: function(){
-		$("#content").html(this.$el);
-	}
+		render: function(){
+			$("#content").html(this.$el);
+		},
 
-	view_story : function(story){
-		var storyView = new StoryView({collection: story});
-		storyView.render();
-	}
-
+		view_story : function(story){
+			var storyView = new StoryView({collection: story});
+			storyView.render();
+		},
+	});
+	return PageView
 
 });
