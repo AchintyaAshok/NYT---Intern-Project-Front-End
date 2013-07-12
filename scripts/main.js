@@ -20,7 +20,7 @@ requirejs.config({
 })
 
 requirejs(['collections/storyCollection', 'collections/slideCollection', 'models/story', 'models/slide', 'views/slideView', 'views/storyListView', 'views/storyListItemView','views/storyView', 'views/pageView' ],
-function(StoryListCollection, Story, StoryModel, SlideModel, SlideView, StoryListView, StoryListItemView, StoryView, PageView){
+function(StoryCollection, slideCollection, StoryModel, SlideModel, SlideView, StoryListView, StoryListItemView, StoryView, PageView){
     var AppRouter = Backbone.Router.extend({
         routes: {
             "" : "home",
@@ -28,27 +28,13 @@ function(StoryListCollection, Story, StoryModel, SlideModel, SlideView, StoryLis
             "testStoryView": "testStoryView",
         },
 
-        // initialize: function(){
-            
+        // initialize: function(options){
+        
         // },
 
         home: function(){
-            var storyListCollection = new StoryListCollection();
-            storyListCollection.fetch({
-                error: function(collection, response){
-                    console.log('error', response);
-                },
-
-                success: function(collection, response){
-                    for(var r = 0, l = response.length; r<l; r++){
-                        var m = new StoryModel(response[r]);    //  for each element in the response, you create a story based off of the story model 
-                        storyListCollection.add(m);             //  add each new model to the collection 
-                        //console.log(storyListCollection);
-                    }
-                    var storyList = new StoryListView({collection: storyListCollection});
-
-                }
-            });
+            var pageView = new PageView();
+            pageView.storyListView();
             
         },
 

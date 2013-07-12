@@ -6,11 +6,41 @@ define([
 	'models/slide'
 ], function(Backbone, Slide){
 	//a batch is defined as the group of screenshots taken in the same cron job
-	var Story = Backbone.Collection.extend({
-		model: Slide,
-		url: '/story',// TODO  --> /story/id
+	var SlideCollection = Backbone.Collection.extend({
 
+		initialize: function(models, options) {
+			console.log('options');
+			console.log(options);
+		    this.sid = options.sId;
+		  },
+		  url: function() {
+		    return '/getSlides/' + this.sid;
+		  },
+		  model: Slide,
+
+		// // self: this,
+		// initialize: function(models, options) {
+		// 	console.l
+		// 	self.storyId = options.sId;
+		// //     self.model = Slide;
+		// //     self.url = 'http://localhost:8000/getSlides/'+this.storyId;// TODO  --> /story/id
+		// },
+
+		// // url: function(){
+		// // 	if(this.hasOwnProperty(storyId)){
+		// // 		return 'http://localhost:8000/getSlides/'+this.storyId;
+		// // 	} else{
+		// // 		return 'http://localhost:8000/getSlides/';
+		// // 	}
+		// // },
+
+		// url: function(){
+		// 	return 'http://localhost:8000/getSlides/'+this.storyId;
+		// },
+
+		// storyId: '1'
+		
 	});
 
-	return Story;
+	return SlideCollection;
 });

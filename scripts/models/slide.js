@@ -15,7 +15,7 @@ define([
 			this.summary = options.summary;
 		},
 
-		idAttribute: "slide_id",
+		//idAttribute: "slide_id",
 
 	});
 	return Slide;

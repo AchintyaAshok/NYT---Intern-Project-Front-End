@@ -4,11 +4,14 @@ define([
 ], function(Backbone, Story){
 
 	var SlideView = Backbone.View.extend({
-		id: 'story',
+		
+		attributes: {
+			'class': 'slide'
+		},
 
 		tagname: 'div',
 
-		template: _.template('hihi'),
+		template: _.template('slide template id: '),//<%= slide_id %>'),
 
 		initialize: function(){
 			this.render();

@@ -10,7 +10,7 @@ define([
 
 	var StoryListItemView = Backbone.View.extend({
 
-		tagName: 'li',
+		tagName: 'div',
 
 		template: _.template('hi hi hi <%= headline %>'),//Template),//'<h2><%= headline %></h2> by <%= authorFirstName %> <%= authorLastName %>'),
 
@@ -18,14 +18,17 @@ define([
 
 
 		initialize: function(){
-			//console.log(Template);
+			//console.log(this);
+			//this.$el.html(this.template(this.collection.))
 			//this.model.bind("change", this.render, this);
 			//this.model.bind("destroy", this.close, this);
 		},
 
 		render: function(){
-			console.log(this.attributes);
-			this.$el.html(this.template(this.attributes));
+			console.log(this.model);
+			this.$el.attr('id',this.model.id);
+			console.log(this.$el);
+			this.$el.html(this.template(this.model.toJSON()));
 			return this.$el; // return the DOM
 		},
 

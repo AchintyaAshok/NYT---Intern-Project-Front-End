@@ -12,11 +12,10 @@ define([
 	var StoryListView = Backbone.View.extend({
 		id: 'storyList',
 
-		tagname: 'ul',
+		tagname: 'div',
 
 		initialize: function(){
 			var self = this;
-			//var collectionOfStoryListView = this.collection;
 			var storyCollection = new StoryCollection();
 			storyCollection.fetch({
 			    error: function(collection, response){
@@ -25,43 +24,18 @@ define([
 
 			    success: function(collection, response){
 			    	for(var i = 0; i < storyCollection.length; i++){
-			    		//console.log(storyCollection.models[i]);
-			    		var storyListItemDOM  = new StoryListItemView(storyCollection.models[i]).render();
-			    		console.log(self);
+			    		var storyListItemDOM  = new StoryListItemView({model: storyCollection.models[i]}).render();
 			    		self.$el.append(storyListItemDOM);	//	Add each new dom to the list dom
 
 			    	}
-			    	self.render();
 			    }
 			});
-			// console.log(storyCollection);
-			// console.log(storyCollection.models.length);
 			
 		},
 
 
 		render: function(){
-			// var stories = this.collection.models; // storylist is a collection of stories
-			// var l = stories.length;
-			// for(var i = 0; i< l; i++){
-			// 	console.log(stories);
-			// 	//console.log(stories[i]);
-			// 	var storyListItem = new StoryListItemView({model: stories[i]}).render();
-			// 	this.$el.append(storyListItem.el);		//	Appends each new Rendered StoryListItem to the given DOM element 
-
-			// }
-			// console.log(this);
-			console.log(this.el);
-			$("#content").html(this.el);				//	Finally, draw the StoryListView on the page
 			return this;
-		},
-
-		events: {
-			"click .storyListItem" : "view_story"
-		},
-
-		view_story: function(){
-			$('#container').html(this.$el);
 		}
 
 	});

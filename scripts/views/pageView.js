@@ -4,9 +4,13 @@
 
 define([
 	'views/storyView',
+	'views/storyListView',
+	'models/story',
+	'models/slide',
+	'collections/storyCollection',
 	'collections/slideCollection'
 ],
-function(StoryView, StoryCollection){
+function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, SlideCollection){
 	var PageView = Backbone.View.extend({
 		tagName: 'div',
 		
@@ -20,8 +24,62 @@ function(StoryView, StoryCollection){
 			$("#content").html(this.$el);
 		},
 
-		view_story : function(story){
-			var storyView = new StoryView({collection: story});
+		showView: function(view){
+			console.log('this.currentView',this.currentView);
+			if(this.currentView){
+				this.currentView.close();
+			}
+
+			this.currentView = view;
+			console.log('this.currentView', this.currentView);
+			this.currentView.render();
+
+			$("#content").html(this.currentView.$el);
+			console.log('this',this);
+		},
+
+		storyListView : function(){
+			var self = this;
+			var storyListCollection = new StoryCollection();
+			storyListCollection.fetch({
+			    error: function(collection, response){
+			        console.log('error', response);
+			    },
+
+			    success: function(collection, response){
+			        for(var r = 0, l = response.length; r<l; r++){
+			            var m = new StoryModel(response[r]);    //  for each element in the response, you create a story based off of the story model 
+			            storyListCollection.add(m);             //  add each new model to the collection 
+			            //console.log(storyListCollection);
+			        }
+			        var storyList = new StoryListView({collection: storyListCollection}).render();
+			        console.log('story list->', storyList);
+			        //self.showView(storyList);
+			        self.$el.html(storyList.el);
+			        $("#content").html(self.$el);
+			    }
+			});
+			console.log(this);
+		},
+
+		view_story : function(ev){
+			var storyId = ev.currentTarget.id;
+			var self = this;
+			var slideCollection = new SlideCollection([],{sId: storyId});
+			console.log('collection created');
+			slideCollection.fetch({
+				success: function(collection, response){
+					for(var r = 0, l = response.length; r<l; r++){
+						var m = new SlideModel(response[r]);
+						slideCollection.add(m);
+					}
+					var storyView = new StoryView({collection: slideCollection}).render();
+					//self.$el.html(storyView);
+					//$("#content").html(self.$el);
+					self.showView(storyView);
+				}
+			});
+			var storyView = new StoryView({collection: slideCollection});
 			storyView.render();
 		},
 	});
