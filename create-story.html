@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+	<meta name ="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<title>Create Story</title>
+	<script type="text/javascript" src="holder.js"></script>
+	<script type="text/javascript" src="scripts/lib/jquery.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="file-upload.js"></script>
+</head>
+<body>
+
+<div class="container-fluid span12" style="float:none; margin:0 auto;">
+
+	<div class="page-header span12" style="padding-top:30px;">
+		<table class="span12" border="0" style="float:none; margin:0 auto;">
+			<tr>
+				<td><h1>Create Story</h3></td>
+				<td align="right" valign="bottom"><button type="submit" class="btn">Submit</button></td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="row-fluid span12" style="margin:0; padding:0;">
+		<!-- Cover photo -->
+		<div class="thumbnails span6">
+			<img id="addPhoto" src="holder.js/450x220" onclick="getFilePathFromDialog();" style="border-style:solid; border-width:3px; border-color:white;">
+			<input type="file" id="fileBrowser" name="fileBrowser" style="visibility:hidden; display:none;" multiple/>
+		</div>
+
+		<!-- Headline and author -->
+	    <div class="span6">
+	    	<form>
+	    		<label class="lead">Headline</label>
+		    	<input class="span12" type="text" placeholder="New headline"></input>
+
+				<div class="span12" style="margin:0; padding:0;"><hr></div>
+
+				<label class="lead">Author</label>
+		    	<input class="span6" type="text" placeholder="First name"></input>
+		    	<input class="span6" type="text" placeholder="Last name"></input>
+		    </form>
+		</div>
+		<!-- description -->
+		<div class="span12" style="margin:0; padding:0;">
+		    <form>
+		    	<br>
+		    	<label class="lead">Description</label>
+		    	<textarea rows="4" class="span12"></textarea>
+		    </form>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
