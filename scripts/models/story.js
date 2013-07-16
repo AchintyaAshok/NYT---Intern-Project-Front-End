@@ -12,9 +12,10 @@ define([
 		},
 
 		initialize: function(options){
+			//console.log(options);
 			this._id 				= options.story_id;
 			this.headline 			= options.headline;
-			this.author 	= options.author;
+			this.author 			= options.author;
 			// this.author		= options.authorLastName;
 			//add_tags(options.tags);	//	Get an array of tags
 

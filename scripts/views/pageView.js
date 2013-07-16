@@ -16,20 +16,25 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 		
 		id: 'page',
 
-		//view: {},
+		view: {},
 
 		events:{
 			"click .storyListItem" : "view_story"
 		},
 
+
 		initialize: function(view){
+			console.log('@initialize in PageView->',view);
 			this[view] = view;
-		}
+		},
 
 		render: function(){
 			//this.$el.append(this.view.$el);
-			console.log(this[view]);
-			$("#content").html(this.el);
+			//console.log(this.view);
+			this.$el.html(this.view);
+			console.log('@render in pageView :: rendering the entire element->', this.$el);
+			this.$el.append("<h>SOMETHING TO LOOK AT</h>");
+			$("#content").html(this.$el);
 		},
 
 		// showView: function(view){
@@ -59,8 +64,9 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 			        if(this.view != undefined){
 			        	this.view.remove();
 			        }
-			        this.view = storyList;
-			        console.log(this.view);
+			        self.view = storyList;
+			        console.log('@success @storyListView in pageView :: logging the view->', self.view);
+
 			        self.render();
 			    }
 			});
@@ -77,12 +83,14 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 					// 	var m = new SlideModel(response[r]);
 					// 	slideCollection.add(m);
 					// }
+					console.log('test');
+					console.log('collection',collection);
 					var storyView = new StoryView({collection: collection}).render();
 					if(this.view != undefined){
 						this.view.remove();
 					}
-					this.view = storyView;
-					this.render();
+					self.view = storyView;
+					self.render();
 				}
 			});
 		},

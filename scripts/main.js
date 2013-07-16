@@ -19,8 +19,11 @@ requirejs.config({
     }
 })
 
-requirejs(['collections/storyCollection', 'collections/slideCollection', 'models/story', 'models/slide', 'views/slideView', 'views/storyListView', 'views/storyListItemView','views/storyView', 'views/pageView' ],
-function(StoryCollection, slideCollection, StoryModel, SlideModel, SlideView, StoryListView, StoryListItemView, StoryView, PageView){
+requirejs(['collections/storyCollection', 'collections/slideCollection', 'models/story', 'models/slide', 
+    'views/slideView', 'views/storyListView', 'views/storyListItemView','views/storyView', 'views/pageView' ],
+function(StoryCollection, SlideCollection, Story, SlideModel, 
+    SlideView, StoryListView, StoryListItemView, StoryView, PageView){
+    
     var AppRouter = Backbone.Router.extend({
         routes: {
             "" : "home",
@@ -28,12 +31,11 @@ function(StoryCollection, slideCollection, StoryModel, SlideModel, SlideView, St
             "testStoryView": "testStoryView",
         },
 
-        // initialize: function(options){
-        
-        // },
+        pageView : new PageView(),
 
         home: function(){
             var storyListCollection = new StoryCollection();
+            var viewToRender;
 
             storyListCollection.fetch({
                 error: function(collection, response){
@@ -41,39 +43,49 @@ function(StoryCollection, slideCollection, StoryModel, SlideModel, SlideView, St
                 },
 
                 success: function(collection, response){
-                    var storyList = new StoryListView({collection: collection}).render();
-                    if(this.view != undefined){
-                        this.view.remove();
-                    }
-                    this.view = storyList;
-                    console.log(this.view);
-                    self.render();
-                }
+                    //console.log('Number of Stories Fetched->', collection.models.length);
+                    
+                    var storyList = new StoryListView({collection: storyListCollection}).render();
+                    
+                    // if(this.view != undefined){
+                    //     this.view.remove();
+                    // }
+                    // this.view = storyList;
+                    // //console.log(this.view);
+                    // self.render();
+                    viewToRender = storyList;
+                    console.log('@success @home in main.js->', viewToRender);
+                },
             });
 
-            var pageView = new PageView();
-            pageView.storyListView();
+            //var pageView = new PageView(viewToRender); //  create the page with the Story List View
+            this.pageView.view = viewToRender;
+            this.pageView.storyListView();
             
         },
 
         testStoryView: function(){
-            var story = new Story();
+            //var slideCollection = new SlideCollection();
+            //var viewToRender;
             //var pageView = new PageView();
-            story.fetch({
-                error: function(collection, response){
-                    console.log('error', response);
-                },
+            // slideCollection.fetch({
+            //     error: function(collection, response){
+            //         console.log('error', response);
+            //     },
 
-                success: function(collection, response){
-                    // for(var r = 0, l = response.length; r<l;r++){
-                    //     var model = new SlideModel(response[r]);
-                    //     story.add(model);
-                    // }
-                    var storyView = new StoryView({collection: story});
-                    var pageView = new PageView(storyView);
-                    pageView.render(story);
-                }
-            })
+            //     success: function(collection, response){
+            //         // for(var r = 0, l = response.length; r<l;r++){
+            //         //     var model = new SlideModel(response[r]);
+            //         //     story.add(model);
+            //         // }
+            //         var storyView = new StoryView({collection: slideCollection});
+            //         viewToRender = storyView;
+            //         //pageView.render(slideCollection);
+            //     }
+            // });
+
+            //this.pageView.view = viewToRender;
+            this.pageView.view_story();
         }
     });
     app = new AppRouter();
