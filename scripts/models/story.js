@@ -1,3 +1,6 @@
+/*
+	This is the Story Model, it contains information of what a story object should have.
+*/
 define([
 	'backbone'
 ], function(Backbone){
@@ -9,10 +12,11 @@ define([
 		},
 
 		initialize: function(options){
+			//console.log(options);
 			this._id 				= options.story_id;
 			this.headline 			= options.headline;
-			this.authorFirstName 	= options.authorFirstName;
-			this.authorLastName		= options.authorLastName;
+			this.author 			= options.author;
+			// this.author		= options.authorLastName;
 			//add_tags(options.tags);	//	Get an array of tags
 
 		},
