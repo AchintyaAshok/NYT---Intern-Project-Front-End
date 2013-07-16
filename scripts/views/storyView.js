@@ -14,10 +14,10 @@ define([
 	var StoryView = Backbone.View.extend({
 		id: 'story',
 		tagname: 'div',
-		template: _.template("testing!! <%= story_id %>"),//StoryViewTemplate),
+		template: _.template("testing!!"),// <%= story_id %>"),//StoryViewTemplate),
 
 		initialize: function(){
-			this.$el.append(this.template(this.model.toJSON()));
+			this.$el.append(this.template());//this.model.toJSON()));
 			return this.$el;
 		},
 
