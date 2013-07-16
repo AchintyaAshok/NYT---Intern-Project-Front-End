@@ -16,27 +16,35 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 		
 		id: 'page',
 
+		//view: {},
+
 		events:{
 			"click .storyListItem" : "view_story"
 		},
 
+		initialize: function(view){
+			this[view] = view;
+		}
+
 		render: function(){
-			$("#content").html(this.$el);
+			//this.$el.append(this.view.$el);
+			console.log(this[view]);
+			$("#content").html(this.el);
 		},
 
-		showView: function(view){
-			console.log('this.currentView',this.currentView);
-			if(this.currentView){
-				this.currentView.close();
-			}
+		// showView: function(view){
+		// 	console.log('this.currentView',this.currentView);
+		// 	if(this.currentView){
+		// 		this.currentView.close();
+		// 	}
 
-			this.currentView = view;
-			console.log('this.currentView', this.currentView);
-			this.currentView.render();
+		// 	this.currentView = view;
+		// 	console.log('this.currentView', this.currentView);
+		// 	this.currentView.render();
 
-			$("#content").html(this.currentView.$el);
-			console.log('this',this);
-		},
+		// 	$("#content").html(this.currentView.$el);
+		// 	console.log('this',this);
+		// },
 
 		storyListView : function(){
 			var self = this;
@@ -47,19 +55,15 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 			    },
 
 			    success: function(collection, response){
-			        for(var r = 0, l = response.length; r<l; r++){
-			            var m = new StoryModel(response[r]);    //  for each element in the response, you create a story based off of the story model 
-			            storyListCollection.add(m);             //  add each new model to the collection 
-			            //console.log(storyListCollection);
+			        var storyList = new StoryListView({collection: collection}).render();
+			        if(this.view != undefined){
+			        	this.view.remove();
 			        }
-			        var storyList = new StoryListView({collection: storyListCollection}).render();
-			        console.log('story list->', storyList);
-			        //self.showView(storyList);
-			        self.$el.html(storyList.el);
-			        $("#content").html(self.$el);
+			        this.view = storyList;
+			        console.log(this.view);
+			        self.render();
 			    }
 			});
-			console.log(this);
 		},
 
 		view_story : function(ev){
@@ -69,19 +73,20 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 			console.log('collection created');
 			slideCollection.fetch({
 				success: function(collection, response){
-					for(var r = 0, l = response.length; r<l; r++){
-						var m = new SlideModel(response[r]);
-						slideCollection.add(m);
+					// for(var r = 0, l = response.length; r<l; r++){
+					// 	var m = new SlideModel(response[r]);
+					// 	slideCollection.add(m);
+					// }
+					var storyView = new StoryView({collection: collection}).render();
+					if(this.view != undefined){
+						this.view.remove();
 					}
-					var storyView = new StoryView({collection: slideCollection}).render();
-					//self.$el.html(storyView);
-					//$("#content").html(self.$el);
-					self.showView(storyView);
+					this.view = storyView;
+					this.render();
 				}
 			});
-			var storyView = new StoryView({collection: slideCollection});
-			storyView.render();
 		},
+
 	});
 	return PageView
 

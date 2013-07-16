@@ -25,11 +25,9 @@ define([
 		},
 
 		render: function(){
-			console.log(this.model);
 			this.$el.attr('id',this.model.id);
-			console.log(this.$el);
 			this.$el.html(this.template(this.model.toJSON()));
-			return this.$el; // return the DOM
+			return this; // return the view
 		},
 
 		events: {
