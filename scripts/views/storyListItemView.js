@@ -5,15 +5,15 @@
 define([ 
 	'backbone',
 	'underscore',
-	'templates/template'
+	'text!templates/testStoryListItemTemplate.html'
 ], function(Backbone, _, Template){
 
 	var StoryListItemView = Backbone.View.extend({
 
 		tagName: 'div',
 
-		template: _.template('<br/>The Story Author:<i><%= author %></i><hr/>'),//Template),//'<h2><%= headline %></h2> by <%= authorFirstName %> <%= authorLastName %>'),
-
+		template: _.template(Template.replace(/(\r\n|\n|\r)/gm,"")),//'<br/>The Story Author:<i><%= author %></i><hr/>'),//Template),//'<h2><%= headline %></h2> by <%= authorFirstName %> <%= authorLastName %>'),
+	
 		attributes: {"class":"storyListItem"},	//	Append this class to each Story List Item so we can reference it later
 
 
