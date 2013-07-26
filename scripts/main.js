@@ -31,36 +31,45 @@ function(StoryCollection, SlideCollection, Story, SlideModel,
             "testStoryView": "testStoryView",
         },
 
-        pageView : new PageView(),
+        // pageView : new PageView(),
 
         home: function(){
-            var storyListCollection = new StoryCollection();
-            var viewToRender;
+            var storyListView = new StoryListView().render();
+            console.log(storyListView);
+            var pageView = new PageView({view: storyListView});
+            console.log(pageView);
+            pageView.render();
 
-            storyListCollection.fetch({
-                error: function(collection, response){
-                    console.log('error', response);
-                },
 
-                success: function(collection, response){
-                    //console.log('Number of Stories Fetched->', collection.models.length);
+            // var storyListCollection = new StoryCollection();
+            // var viewToRender;
+            // var self = this;
+            // var pageView = new PageView();
+            // this.pageView = pageView;
+
+            // storyListCollection.fetch({
+            //     error: function(collection, response){
+            //         console.log('error', response);
+            //     },
+
+            //     success: function(collection, response){
+            //         //console.log('Number of Stories Fetched->', collection.models.length);
                     
-                    var storyList = new StoryListView({collection: storyListCollection}).render();
-                    
-                    // if(this.view != undefined){
-                    //     this.view.remove();
-                    // }
-                    // this.view = storyList;
-                    // //console.log(this.view);
-                    // self.render();
-                    viewToRender = storyList;
-                    console.log('@success @home in main.js->', viewToRender);
-                },
-            });
+            //         var storyListView = new StoryListView({collection: storyListCollection}).render();
+            //         self.pageView.view = storyListView;
+            //         // if(this.view != undefined){
+            //         //     this.view.remove();
+            //         // }
+            //         // this.view = storyList;
+            //         // //console.log(this.view);
+            //         // self.render();
+            //         console.log('@success @home in main.js->', viewToRender);
+            //     },
+            // });
 
-            //var pageView = new PageView(viewToRender); //  create the page with the Story List View
-            this.pageView.view = viewToRender;
-            this.pageView.storyListView();
+            // //var pageView = new PageView(viewToRender); //  create the page with the Story List View
+            // this.pageView.view = viewToRender;
+            // this.pageView.storyListView();
             
         },
 
