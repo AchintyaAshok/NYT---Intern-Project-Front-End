@@ -38,20 +38,6 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 			$("#content").html(this.$el);
 		},
 
-		// showView: function(view){
-		// 	console.log('this.currentView',this.currentView);
-		// 	if(this.currentView){
-		// 		this.currentView.close();
-		// 	}
-
-		// 	this.currentView = view;
-		// 	console.log('this.currentView', this.currentView);
-		// 	this.currentView.render();
-
-		// 	$("#content").html(this.currentView.$el);
-		// 	console.log('this',this);
-		// },
-
 		storyListView : function(){
 			var self = this;
 			var storyListCollection = new StoryCollection();
@@ -85,10 +71,6 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 					console.log('response, ',response);
 				},
 				success: function(collection, response){
-					// for(var r = 0, l = response.length; r<l; r++){
-					// 	var m = new SlideModel(response[r]);
-					// 	slideCollection.add(m);
-					// }
 					console.log('test');
 					console.log('collection',collection);
 					var storyView = new StoryView({collection: collection}).render();

@@ -18,10 +18,6 @@ define([
 
 
 		initialize: function(){
-			//console.log(this);
-			//this.$el.html(this.template(this.collection.))
-			//this.model.bind("change", this.render, this);
-			//this.model.bind("destroy", this.close, this);
 		},
 
 		render: function(){
