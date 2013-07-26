@@ -32,9 +32,9 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 		render: function(){
 			//this.$el.append(this.view.$el);
 			//console.log(this.view);
-			console.log(this.view);
+			//console.log('rendering page view:', this.view);
 			this.$el.html(this.view);
-			console.log('@render in pageView :: rendering the entire element->', this.$el);
+			//console.log('@render in pageView :: rendering the entire element->', this.$el);
 			$("#content").html(this.$el);
 		},
 
@@ -52,7 +52,7 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 			        	this.view.remove();
 			        }
 			        self.view = storyList;
-			        console.log('@success @storyListView in pageView :: logging the view->', self.view);
+			        //console.log('@success @storyListView in pageView :: logging the view->', self.view);
 
 			        self.render();
 			    }
@@ -60,20 +60,22 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 		},
 
 		view_story : function(ev){
-			console.log('YO');
+			//console.log('YO');
 			var storyId = ev.currentTarget.id;
 			var self = this;
-			var slideCollection = new SlideCollection([],{sId: storyId});
-			console.log('collection created');
+			var slideCollection = new SlideCollection([],{sId: storyId}); // get the slide collection
+			//console.log('collection created');
 			slideCollection.fetch({
 				error: function(error, response){
 					console.log('error, ',error);
 					console.log('response, ',response);
 				},
 				success: function(collection, response){
-					console.log('test');
-					console.log('collection',collection);
-					var storyView = new StoryView({collection: collection}).render();
+					//console.log('test');
+					//console.log('collection',collection);
+					var storyView = new StoryView({collection: collection});
+					console.log('storyview', storyView)
+					storyView = storyView.render();
 					if(this.view != undefined){
 						this.view.remove();
 					}
@@ -81,6 +83,8 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 					self.render();
 				}
 			});
+
+
 		},
 
 	});
