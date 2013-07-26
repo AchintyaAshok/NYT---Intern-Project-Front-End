@@ -13,13 +13,14 @@
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="file-upload.js"></script>
 </head>
+
 <body>
 
 <div class="container span12" style="float:none; margin:0 auto;">
 
 	<div class='row' id='top-stuff'>
 		<div class="page-header span12" style="padding-top:30px;">
-			<h1 class='pull-left'>Create Story</h3>
+			<h1 class='pull-left'>Create Story</h1>
 			<h1><button class='btn btn-primary btn-large pull-right'>Submit</button></h1>
 		</div>	
 	</div>
@@ -35,7 +36,7 @@
 	    <div class="span6">
 	    	<form>
 	    		<label class="lead">Headline</label>
-		    	<input class="span6" type="text" placeholder="New headline"></input>
+		    	<input class="span6" type="text" placeholder="Story Headline goes here"></input>
 				<hr>
 				<label class="lead">Author</label>
 		    	<input class="span3" type="text" placeholder="First name"></input>
@@ -48,13 +49,134 @@
 	<div class="row span12" style="margin:0; padding:0;">
 	    <form>
 	    	<br>
-	    	<label class="lead">Description</label>
+	    	<label class="lead">Summary</label>
 	    	<textarea rows="4" class="span12"></textarea>
 	    </form>
 	</div>
 
+
 	<!-- THIS IS WHERE NEW SLIDES GET APPENDED -->
-	<div class='row span12 slide-collection'></div>
+	<div class='row span12 slide-collection' style='margin:0 auto'>
+		<div class="page-header span12" style="padding-top:30px;">
+			<h2 class='pull-left'>Slides</h2>
+		</div>
+<!-- 		<h3 class="text-right">1</h3>
+		<div class='container span12' style='padding-left:10px; padding-right:10px;'>
+			<div class='row span12 text-center' style='padding-top:20px; height:450px;'>
+				<div class='thumbnails span12'>
+					<div class='thumbnail span5' style='height:100%;'>
+						<div style='height:300px;'>
+							<img id="image-left" src="holder.js/300x300" style="border-style:solid; border-color:white; padding-bottom:20px;">
+						</div>
+						<form style='margin:0 auto'>
+							<hr>
+							<input type='text' class='span4' id='left-credit' placeholder='Photo Credit'></input><br>
+							<textarea rows='2' class="span4" id='left-caption' type="text" placeholder="Caption this image"></textarea>
+						</form>
+					</div>
+					<div class='span1 padding'></div>
+					<div class='span1 padding'></div>
+					<div class='thumbnail span5' style='height:100%;'>
+						<div style='height:300px;'>
+							<img id="image-left" src="holder.js/300x300" style="border-style:solid; border-color:white; padding-bottom:20px;">
+						</div>
+						<form style='margin:0 auto'>
+							<hr>
+							<input type='text' class='span4' id='left-credit' placeholder='Photo Credit'></input><br>
+							<textarea rows='2' class="span4" id='left-caption' type="text" placeholder="Caption this image"></textarea>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class='row span12 spacer' style="margin:0; auto"><br></div>
+			<div class='row span12' style="margin:0; auto">
+				<form style='margin:0 auto'>
+					<label class="lead">Description</label>
+					<textarea rows='3' class="span12" id='description' type="text" placeholder="Enter a description for the slide"></textarea>
+				</form>
+			</div>
+		</div>
+
+		<div class='span12 spacing'>
+		<br>
+		<hr>
+		<br>
+		</div>
+
+		<h3 class="text-right">2</h3>
+		<div class='container span12' style='padding-left:10px; padding-right:10px;'>
+			<div class='row span12 text-center' style='padding-top:20px; margin:0; auto'>
+				<ul class='thumbnails' id='image-pane' >
+					<li class='thumbnail span3' style='width:350px; height:450px;'>
+						<div style='width:100%; height:300px; margin:0 auto;'>
+							<img id="image-right" src="holder.js/300x300" style="border-style:solid; border-color:white; padding-bottom:20px;">
+						</div>
+						<hr>
+						<form>
+							<input type='text' id='left-credit' placeholder='Photo Credit'></input>
+							<textarea rows='2' id='left-caption' type="text" placeholder="Caption this image"></textarea>
+						</form>
+					</li>
+					<li class='thumbnail span3' style='width:350px; height:450px;'>
+						<div style='width:100%; height:300px; margin:0 auto;'>
+							<img id="image-right" src="holder.js/300x300" style="border-style:solid; border-color:white; padding-bottom:20px;">
+						</div>
+						<hr>
+						<form style='margin:0;'>
+							<input type='text' id='left-credit' placeholder='Photo Credit'></input><br>
+							<textarea rows='2' id='left-caption' type="text" placeholder="Caption this image"></textarea>
+						</form>
+					</li>
+					<li class='thumbnail span3' style='width:350px; height:450px;'>
+						<div style='width:100%; height:300px; margin:0;'>
+							<img id="image-right" src="holder.js/300x300" style="border-style:solid; border-color:white; padding-bottom:20px;">
+						</div>
+						<hr>
+						<form>
+							<input type='text' id='left-credit' placeholder='Photo Credit'></input><br>
+							<textarea rows='2' id='left-caption' type="text" placeholder="Caption this image"></textarea>
+						</form>
+					</li>
+					<li class='thumbnail span3' style='width:350px; height:450px;'>
+						<div style='width:100%; height:300px; margin:0;'>
+							<img id="image-right" src="holder.js/300x300" style="border-style:solid; border-color:white; padding-bottom:20px;">
+						</div>
+						<hr>
+						<form>
+							<input type='text' id='left-credit' placeholder='Photo Credit'></input><br>
+							<textarea rows='2' id='left-caption' type="text" placeholder="Caption this image"></textarea>
+						</form>
+					</li>
+					<li class='thumbnail span3' style='width:350px; height:450px;'>
+						<div style='width:100%; height:300px; margin:0;'>
+							<img id="image-right" src="holder.js/300x300" style="border-style:solid; border-color:white; padding-bottom:20px;">
+						</div>
+						<hr>
+						<form>
+							<input type='text' id='left-credit' placeholder='Photo Credit'></input><br>
+							<textarea rows='2' id='left-caption' type="text" placeholder="Caption this image"></textarea>
+						</form>
+					</li>
+					<li class='thumbnail span3' style='width:350px; height:450px;'>
+						<div style='width:100%; height:300px; margin:0;'>
+							<img id="image-right" src="holder.js/300x300" style="border-style:solid; border-color:white; padding-bottom:20px;">
+						</div>
+						<hr>
+						<form>
+							<input type='text' id='left-credit' placeholder='Photo Credit'></input><br>
+							<textarea rows='2' id='left-caption' type="text" placeholder="Caption this image"></textarea>
+						</form>
+					</li>
+				</ul>
+			</div>
+			<div class='row span12' style="margin:0; auto">
+				<form style='margin:0 auto'>
+					<label class="lead">Description</label>
+					<textarea rows='3' class="span12" id='description' type="text" placeholder="Enter a description for the slide"></textarea>
+				</form>
+			</div>
+		</div>	
+	</div> -->
 
 	<div class="row span12 navbar">
 
@@ -62,13 +184,13 @@
 			<ul class='nav slide-selection-nav'>
 				<li><button class='btn btn-primary' id='add-slide' style='width:100px;'>Add Slide</button></li>
 				<li class='divider-vertical'></li>
-				<li><button class='btn' id='new-cover' style='width:120px;'>Cover</button></li>
+				<li><button class='btn' id='new-cover-button' style='width:120px;'>Cover</button></li>
 				<li class='divider-vertical'></li>
-				<li><button class='btn' id='new-scrubber' style='width:120px;'>Scrubber</button></li>
+				<li><button class='btn' id='new-scrubber-button' style='width:120px;'>Scrubber</button></li>
 				<li class='divider-vertical'></li>
-				<li><button class='btn' id='new-comparison' style='width:120px;'>Comparison</button></li>
+				<li><button class='btn' id='new-comparison-button' style='width:120px;'>Comparison</button></li>
 				<li class='divider-vertical'></li>
-				<li><button class='btn' id='new-slideshow' style='width:120px;'>Slideshow</button></li>
+				<li><button class='btn' id='new-slideshow-button' style='width:120px;'>Slideshow</button></li>
 			</ul>
 		</div>	
 	</div>
