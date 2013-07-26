@@ -34,10 +34,10 @@ function(StoryCollection, SlideCollection, Story, SlideModel,
         // pageView : new PageView(),
 
         home: function(){
-            var storyListView = new StoryListView().render();
+            var storyListView = new StoryListView();
+            var rendered = storyListView.render();
             console.log(storyListView);
-            var pageView = new PageView({view: storyListView});
-            console.log(pageView);
+            var pageView = new PageView({view: rendered, collection: storyListView});
             pageView.render();
 
 

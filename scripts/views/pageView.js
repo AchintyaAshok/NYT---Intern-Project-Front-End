@@ -26,16 +26,11 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 
 		initialize: function(options){
 			this.view = options.view;
-			// console.log('@initialize in PageView->',view);
-			// this[view] = view;
+			this.collection = options.collection;
 		},
 
 		render: function(){
-			//this.$el.append(this.view.$el);
-			//console.log(this.view);
-			console.log(this.view);
 			this.$el.html(this.view);
-			console.log('@render in pageView :: rendering the entire element->', this.$el);
 			$("#content").html(this.$el);
 		},
 
@@ -53,15 +48,18 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 			        	this.view.remove();
 			        }
 			        self.view = storyList;
-			        console.log('@success @storyListView in pageView :: logging the view->', self.view);
-
 			        self.render();
 			    }
 			});
+			for(var i = 0, l= storyCollection.length; i<l; i++){
+				this.stories[storyCollection[i].story_id] = storyCollection[i];
+			}
+			console.log('stories');
+			console.log(this.stories);
 		},
 
 		view_story : function(ev){
-			console.log('YO');
+			console.log(ev.currentTarget.id);
 			var storyId = ev.currentTarget.id;
 			var self = this;
 			var slideCollection = new SlideCollection([],{sId: storyId});

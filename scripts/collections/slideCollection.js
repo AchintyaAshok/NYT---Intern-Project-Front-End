@@ -14,7 +14,7 @@ define([
 		    this.sid = options.sId;
 		  },
 		  url: function() {
-		    return 'http://localhost:8000/Slide/' + this.sid;
+		    return '/Slide/' + this.sid;
 		  },
 		  model: Slide,
 		
