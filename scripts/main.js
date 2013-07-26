@@ -10,12 +10,16 @@ requirejs.config({
         },
         'jquery': {
             exports: 'jquery'
+        },
+        'holder': {
+            exports: 'holder'
         }
     },
     paths: {
         'backbone': 'lib/backbone',
         'underscore': 'lib/underscore',
-        'jquery': 'lib/jquery'
+        'jquery': 'lib/jquery',
+        'holder': 'lib/holder',
     }
 })
 

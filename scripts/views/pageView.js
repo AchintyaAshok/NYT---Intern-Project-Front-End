@@ -5,12 +5,13 @@
 define([
 	'views/storyView',
 	'views/storyListView',
+	'views/createStoryView',
 	'models/story',
 	'models/slide',
 	'collections/storyCollection',
 	'collections/slideCollection'
 ],
-function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, SlideCollection){
+function(StoryView, StoryListView, CreateStoryView, StoryModel, SlideModel, StoryCollection, SlideCollection){
 	var PageView = Backbone.View.extend({
 		tagName: 'div',
 		
@@ -20,9 +21,15 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 
 		events:{
 			"click .storyListItem" : "view_story",
-			"click .addStory" : "addStory"
+			"click .addStory" : "addStory",
+			"click #add-slide": "configSlide",
+			"click .newSlide" : "addSlide",
+			"resize": "test"
 		},
 
+		test: function(){
+			console.log('resize');
+		},
 
 		initialize: function(options){
 			this.view = options.view;
@@ -32,6 +39,7 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 		render: function(){
 			this.$el.html(this.view);
 			$("#content").html(this.$el);
+			$(".newSlide").click(function(){console.log('hkasdfja')});
 		},
 
 		storyListView : function(){
@@ -59,6 +67,7 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 		},
 
 		view_story : function(ev){
+			console.log('hey');
 			console.log(ev.currentTarget.id);
 			var storyId = ev.currentTarget.id;
 			var self = this;
@@ -84,7 +93,38 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 
 		addStory: function(){
 			console.log("ADD STORY");
-		}
+			var storyView = new CreateStoryView().render();
+			this.view.remove();
+			this.view = storyView;
+			console.log(this.view);
+			this.render();
+			// $('.slide-selection-nav li:gt(1)').hide();
+
+		},
+
+		addSlide: function(){
+			console.log("AddStory");
+		},
+
+		configSlide: function(){
+			console.log('clicked add slide');
+			var slideChoices = $('.slide-selection-nav li:gt(1)');
+			slideChoices.toggle('slow', function(){
+				var display = slideChoices.css("display");
+				if (display == 'list-item'){
+					$('.add-slide').fadeOut(250, function(){
+						$(this).text('Hide');
+						$(this).fadeIn(250);
+					});
+				}
+				else{
+					$('.add-slide').fadeOut(250, function(){
+						$(this).text('Add Slide');
+						$(this).fadeIn(250);
+					});
+				}
+			});
+		},
 
 	});
 	return PageView

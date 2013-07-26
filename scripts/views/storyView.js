@@ -6,18 +6,20 @@
 define([
 	'backbone',
 	'underscore',
+	'holder',
 	'views/slideView',		//	--> import the slideView because a story has a collection of slides
 	'collections/slideCollection',	//	--> incorporates the story collection 
-], function(Backbone,_, SlideView, SlideCollection){
+	'text!templates/create-story.html',
+], function(Backbone,_, Holder, SlideView, SlideCollection, Template){
 
 	var StoryView = Backbone.View.extend({
 		id: 'story',
 		tagname: 'div',
-		template: _.template("<%= summary %>"),//StoryViewTemplate),
-
+		template: _.template(Template.replace(/(\r\n|\n|\r)/gm,"")),//StoryViewTemplate),
+ 
 		initialize: function(){
 			console.log(this);
-			this.$el.append(this.template(this.collection.models[0]));//this.model.toJSON()));
+			this.$el.append(this.template());//this.model.toJSON()));
 			return this.$el;
 		},
 
