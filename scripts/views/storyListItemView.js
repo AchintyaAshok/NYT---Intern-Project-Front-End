@@ -5,7 +5,7 @@
 define([ 
 	'backbone',
 	'underscore',
-	'text!templates/testStoryListItemTemplate.html'
+	'text!templates/ViewStoryListItem.html'
 ], function(Backbone, _, Template){
 
 	var StoryListItemView = Backbone.View.extend({
@@ -27,7 +27,6 @@ define([
 			this.$el.append(this.template(this.model.toJSON()));	//	get the json of the model & retrieve the elements, then input
 																//	the elements into that template member defined above initialize
 			
-			console.log('@render in StoryListItemView :: What does the list Item look like?->', this.$el[0].innerHTML); // From this we can see if the templating works
 			return this.$el; // return the view
 		},
 

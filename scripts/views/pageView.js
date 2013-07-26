@@ -19,7 +19,8 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 		view: {},
 
 		events:{
-			"click .storyListItem" : "view_story"
+			"click .storyListItem" : "view_story",
+			"click .addStory" : "addStory"
 		},
 
 
@@ -82,6 +83,10 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 				}
 			});
 		},
+
+		addStory: function(){
+			console.log("ADD STORY");
+		}
 
 	});
 	return PageView
