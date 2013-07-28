@@ -1,5 +1,4 @@
-
-<div class="container span12" id="createStory" style="float:none; margin:0 auto;">
+<div class="container span12" style="float:none; margin:0 auto;">
 
 	<div class='row' id='top-stuff'>
 		<div class="page-header span12" style="padding-top:30px;">
@@ -11,7 +10,7 @@
 	<div class="row" style="margin:0; padding:0;">
 		<!-- Cover photo -->
 		<div class="thumbnails span6">
-			<img id="addPhoto" class="img-rounded" src="http://www.catlitteruklimited.co.uk/assets/imgs/catInGrass.jpg" onclick="getFilePathFromDialog();" style="border-style:solid; border-width:3px; border-color:white;">
+			<img id="addPhoto" src="http://www.catlitteruklimited.co.uk/assets/imgs/catInGrass.jpg" onclick="getFilePathFromDialog();" style="border-style:solid; border-width:3px; border-color:white;">
 			<input type="file" id="fileBrowser" name="fileBrowser" style="visibility:hidden; display:none;" multiple/>
 		</div>
 
@@ -33,7 +32,7 @@
 	    <form>
 	    	<br>
 	    	<label class="lead">Summary</label>
-	    	<input rows="4" class="span12"></textarea>
+	    	<textarea rows="4" class="span12"></textarea>
 	    </form>
 	</div>
 
@@ -42,7 +41,14 @@
 	<div class='row span12 slide-collection' style='margin:0 auto'>
 		<div class="page-header span12" style="padding-top:30px;">
 			<h2 class='pull-left'>Slides</h2>
+			<div id="slides">
+			</div>
 		</div>
+	</div>
+	<div class="bottomNavBar">
+	</div>
+</div>
+
 <!-- 		<h3 class="text-right">1</h3>
 		<div class='container span12' style='padding-left:10px; padding-right:10px;'>
 			<div class='row span12 text-center' style='padding-top:20px; height:450px;'>
@@ -158,9 +164,9 @@
 					<textarea rows='3' class="span12" id='description' type="text" placeholder="Enter a description for the slide"></textarea>
 				</form>
 			</div>
-		</div>	-->
+		</div>	
 	</div> 
-<!--
+
 	<div class="row span12 navbar">
 
 		<div class='navbar-inner pull-left text-center'>
@@ -176,8 +182,5 @@
 				<li><button class='btn' id='new-slideshow-button' style='width:120px;'>Slideshow</button></li>
 			</ul>
 		</div>	
-	</div>
-	<script src="create-story.js"></script> -->
-
-</div>
+	</div> -->
 

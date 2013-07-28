@@ -6,12 +6,13 @@ define([
 	'views/storyView',
 	'views/storyListView',
 	'views/createStoryView',
+	'views/createSlideView',
 	'models/story',
 	'models/slide',
 	'collections/storyCollection',
 	'collections/slideCollection'
 ],
-function(StoryView, StoryListView, CreateStoryView, StoryModel, SlideModel, StoryCollection, SlideCollection){
+function(StoryView, StoryListView, CreateStoryView, CreateSlideView, StoryModel, SlideModel, StoryCollection, SlideCollection){
 	var PageView = Backbone.View.extend({
 		tagName: 'div',
 		
@@ -127,7 +128,24 @@ function(StoryView, StoryListView, CreateStoryView, StoryModel, SlideModel, Stor
 
 		addSlide: function(ev){
 			console.log(ev.target.textContent);
-			console.log("AddStory");
+			var slideChoices = $('.slide-selection-nav li:gt(1)');
+			slideChoices.toggle('slow', function(){
+				var display = slideChoices.css("display");
+				if (display == 'list-item'){
+					$('#add-slide').fadeOut(250, function(){
+						$(this).text('Hide');
+						$(this).fadeIn(250);
+					});
+				}
+				else{
+					$('#add-slide').fadeOut(250, function(){
+						$(this).text('Add Slide');
+						$(this).fadeIn(250);
+					});
+				}
+			});
+			var newSlide = new CreateSlideView({'type': ev.target.textContent.toLowerCase()}).render();
+			$("#slides").append(newSlide);
 		},
 
 		configSlide: function(){
