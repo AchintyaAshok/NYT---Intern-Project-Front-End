@@ -37,9 +37,13 @@ function(StoryView, StoryListView, CreateStoryView, StoryModel, SlideModel, Stor
 		},
 
 		render: function(){
+			var self = this;
 			this.$el.html(this.view);
 			$("#content").html(this.$el);
-			$(".newSlide").click(function(){console.log('hkasdfja')});
+			$(".newSlide").click(
+				function(ev){
+					self.addSlide(ev);
+				});
 		},
 
 		storyListView : function(){
@@ -98,11 +102,31 @@ function(StoryView, StoryListView, CreateStoryView, StoryModel, SlideModel, Stor
 			this.view = storyView;
 			console.log(this.view);
 			this.render();
-			// $('.slide-selection-nav li:gt(1)').hide();
+			$('.slide-selection-nav li:gt(1)').hide();
+			$('#add-slide').click(function(){
+				console.log('clicked add slide');
+				var slideChoices = $('.slide-selection-nav li:gt(1)');
+				slideChoices.toggle('slow', function(){
+					var display = slideChoices.css("display");
+					if (display == 'list-item'){
+						$('#add-slide').fadeOut(250, function(){
+							$(this).text('Hide');
+							$(this).fadeIn(250);
+						});
+					}
+					else{
+						$('#add-slide').fadeOut(250, function(){
+							$(this).text('Add Slide');
+							$(this).fadeIn(250);
+						});
+					}
+				});
+			});
 
 		},
 
-		addSlide: function(){
+		addSlide: function(ev){
+			console.log(ev.target.textContent);
 			console.log("AddStory");
 		},
 
