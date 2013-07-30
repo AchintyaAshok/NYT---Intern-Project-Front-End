@@ -20,9 +20,9 @@ requirejs.config({
 })
 
 requirejs(['collections/storyCollection', 'collections/slideCollection', 'models/story', 'models/slide', 
-    'views/slideView', 'views/storyListView', 'views/storyListItemView','views/storyView', 'views/pageView' ],
+    'views/slideView', 'views/storyListView', 'views/storyListItemView','views/storyView', 'views/pageView', 'models/story_model' ],
 function(StoryCollection, SlideCollection, Story, SlideModel, 
-    SlideView, StoryListView, StoryListItemView, StoryView, PageView){
+    SlideView, StoryListView, StoryListItemView, StoryView, PageView, Story_Model){
     
     var AppRouter = Backbone.Router.extend({
         routes: {

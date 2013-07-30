@@ -13,10 +13,11 @@ define([
 			console.log(options);
 		    this.sid = options.sId;
 		  },
-		  url: function() {
-		    return '/Slide/' + this.sid;
-		  },
-		  model: Slide,
+		
+		url: function() {
+		return '/Slide/' + this.sid;
+		},
+		model: Slide,
 		
 	});
 

@@ -1,57 +1,32 @@
-<!-- THIS IS THE TEMPLATE FOR A COMPARISON SLIDE -->
-
-<head>
-	<meta name ="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<script type="text/javascript" src="jquery.js"></script>
-	<title>Comparison Slide</title>
-</head>
-
-<body>
-
-	<div class='comparison-slide container span12' style='padding-left:10px; padding-right:10px;'>
-			<div class='row span12 text-center' style='padding-top:20px; height:450px;'>
-				<div class='thumbnails span12'>
-					<div class='thumbnail span5' style='height:100%;'>
-						<div style='height:300px;'>
-							<!-- <img id="image-left" src="http://static5.businessinsider.com/image/51acb7b2ecad046b4900000b/the-spurs-have-figured-out-the-one-way-to-defend-lebron-james.jpg" style="border-style:solid; border-color:white; padding-bottom:20px;"> -->
-							<img id="image-left" src="holder.js/300x300" style="border-style:solid; border-color:white; padding-bottom:20px;">
-						</div>
-						<form style='margin:0 auto'>
-							<hr>
-							<input type='text' class='span4' id='left-credit' placeholder='Photo Credit'></input><br>
-							<textarea rows='2' class="span4" id='left-caption' type="text" placeholder="Caption this image"></textarea>
-						</form>
-					</div>
-					<div class='span1 padding'></div>
-					<div class='span1 padding'></div>
-					<div class='thumbnail span5' style='height:100%;'>
-						<div style='height:300px;'>
-							<!-- <img id="image-left" src="http://static5.businessinsider.com/image/51acb7b2ecad046b4900000b/the-spurs-have-figured-out-the-one-way-to-defend-lebron-james.jpg" style="border-style:solid; border-color:white; padding-bottom:20px;"> -->
-							<img id="image-left" src="holder.js/300x300" style="border-style:solid; border-color:white; padding-bottom:20px;">
-						</div>
-						<form style='margin:0 auto'>
-							<hr>
-							<input type='text' class='span4' id='left-credit' placeholder='Photo Credit'></input><br>
-							<textarea rows='2' class="span4" id='left-caption' type="text" placeholder="Caption this image"></textarea>
-						</form>
-					</div>
+<!-- COMPARISON SLIDE -->
+<div class='comparison-slide container span12' style='padding-left:10px; padding-right:10px;'>
+	<h3 class='muted text-right'>Comparison</h3>
+	<div class='row span12 text-center' style='padding-top:20px; height:450px;'>
+		<div class='thumbnails span12'>
+			<div class='thumbnail span5' style='height:100%;'>
+				<div style='height:300px;'>
+					<img class='img-rounded' id="image-left" src="<%= left_image %>" style="border-style:solid; border-color:white; padding-bottom:10px;">
+				</div>
+				<div class='text-left' style='height:100px;'>
+					<hr>
+					<p><%= left_caption %> <small class='muted'><%= left_credit %></small></p>
 				</div>
 			</div>
-			<div class='row span12 spacer' style="margin:0; auto"><br></div>
-			<div class='row span12' style="margin:0; auto">
-				<form style='margin:0 auto'>
-					<label class="lead">Description</label>
-					<textarea rows='3' class="span12" id='description' type="text" placeholder="Enter a description for the slide"></textarea>
-				</form>
+			<div class='span1 padding'></div>
+			<div class='span1 padding'></div>
+			<div class='thumbnail span5' style='height:100%;'>
+				<div style='height:300px;'>
+					<img class='img-rounded' id="image-left" src="<%= right_image %>" style="border-style:solid; border-color:white; padding-bottom:10px;">
+				</div>
+				<div class='text-left' style='height:100px;'>
+					<hr>
+					<p><%= right_caption %> <small class='muted'><%= right_credit %></small></p>	
+				</div>
 			</div>
 		</div>
-
-
-	<script src="bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="holder.js"></script>
-	<script type='text/javascript' src='comparison-slide.js'></script>
-	
-</body> 
-
-</html>
+	</div>
+	<div class='row span12'>
+		<h3 class='lead'>Description</h3>
+		<p><%= description %></p>
+	</div>
+</div>

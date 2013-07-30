@@ -1,0 +1,21 @@
+<div class="container span12">
+
+	<div class="row" style="padding-top:20px;">
+		<!-- Cover photo -->
+		<div class="span12" style='position:relative;'>
+			<img class='img-polaroid' id="cover-photo" style="border-style:solid; border-width:3px; border-color:white; width:100%;" src='<%= image_url %>'>
+			<h2 style='position:absolute; color:white; width:95%; top:30px; left:20px;'>
+				<span style='background:rgb(0, 0, 0); background:rgba(0, 0, 0, 0.7); '><%= headline %></span>
+			</h2>
+			<h3 style='position:absolute; color:white; width:95%; bottom:30px; left:20px;'>
+				<span class='lead' style='background:rgb(0, 0, 0); background:rgba(0, 0, 0, 0.5); padding:5px;'><%= author %></span>
+			</h3>
+		</div>
+
+	</div>
+
+	<!-- ALL SLIDES -->
+	<div class='row span12 slide-collection' style='margin:0 auto'>
+		<%= slides %>
+	</div>
+</div>
