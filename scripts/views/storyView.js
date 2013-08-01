@@ -7,9 +7,12 @@
 define([
 	'backbone',
 	'underscore',
+	'holder',
 	'views/slideView',		//	--> import the slideView because a story has a collection of slides
 	'text!templates/viewStory.template.html',
-], function(Backbone, _, SlideView, StoryTemplate){
+	'text!templates/create-story.html',
+], function(Backbone,_, Holder, SlideView, StoryTemplate, CreateStoryTemplate){
+
 
 	var StoryView = Backbone.View.extend({
 		

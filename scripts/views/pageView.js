@@ -5,13 +5,19 @@
 define([
 	'views/storyView',
 	'views/storyListView',
+	//'views/createStoryView',
+	//'views/createSlideView',
 	'models/story',
 	'models/slide',
 	'collections/storyCollection',
 	'collections/slideCollection',
 	'models/story_model',
 ],
-function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, SlideCollection, Story_Model){
+// <<<<<<< HEAD
+// function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, SlideCollection, Story_Model){
+// =======
+function(StoryView, StoryListView, /*CreateStoryView, CreateSlideView,*/ StoryModel, SlideModel, StoryCollection, SlideCollection, Story_Model){
+// >>>>>>> e6356b713dc7cd6728ee1cfc1dd48cf59dc59bf7
 	var PageView = Backbone.View.extend({
 		tagName: 'div',
 		className: 'container',
@@ -22,9 +28,15 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 
 		events:{
 			"click .storyListItem" : "view_story",
-			"click .addStory" : "addStory"
+			"click .addStory" : "addStory",
+			"click #add-slide": "configSlide",
+			"click .newSlide" : "addSlide",
+			"resize": "test"
 		},
 
+		test: function(){
+			console.log('resize');
+		},
 
 		initialize: function(options){
 			this.view = options.view;
@@ -32,10 +44,14 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 		},
 
 		render: function(){
-
+			var self = this;
 			this.$el.html(this.view);
 
 			$("#content").html(this.$el);
+			$(".newSlide").click(
+				function(ev){
+					self.addSlide(ev);
+				});
 		},
 
 		storyListView : function(){
@@ -106,7 +122,75 @@ function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, Slid
 
 		addStory: function(){
 			console.log("ADD STORY");
-		}
+			var storyView = new CreateStoryView().render();
+			this.view.remove();
+			this.view = storyView;
+			console.log(this.view);
+			this.render();
+			$('.slide-selection-nav li:gt(1)').hide();
+			$('#add-slide').click(function(){
+				console.log('clicked add slide');
+				var slideChoices = $('.slide-selection-nav li:gt(1)');
+				slideChoices.toggle('slow', function(){
+					var display = slideChoices.css("display");
+					if (display == 'list-item'){
+						$('#add-slide').fadeOut(250, function(){
+							$(this).text('Hide');
+							$(this).fadeIn(250);
+						});
+					}
+					else{
+						$('#add-slide').fadeOut(250, function(){
+							$(this).text('Add Slide');
+							$(this).fadeIn(250);
+						});
+					}
+				});
+			});
+
+		},
+
+		addSlide: function(ev){
+			console.log(ev.target.textContent);
+			var slideChoices = $('.slide-selection-nav li:gt(1)');
+			slideChoices.toggle('slow', function(){
+				var display = slideChoices.css("display");
+				if (display == 'list-item'){
+					$('#add-slide').fadeOut(250, function(){
+						$(this).text('Hide');
+						$(this).fadeIn(250);
+					});
+				}
+				else{
+					$('#add-slide').fadeOut(250, function(){
+						$(this).text('Add Slide');
+						$(this).fadeIn(250);
+					});
+				}
+			});
+			var newSlide = new CreateSlideView({'type': ev.target.textContent.toLowerCase()}).render();
+			$("#slides").append(newSlide);
+		},
+
+		configSlide: function(){
+			console.log('clicked add slide');
+			var slideChoices = $('.slide-selection-nav li:gt(1)');
+			slideChoices.toggle('slow', function(){
+				var display = slideChoices.css("display");
+				if (display == 'list-item'){
+					$('.add-slide').fadeOut(250, function(){
+						$(this).text('Hide');
+						$(this).fadeIn(250);
+					});
+				}
+				else{
+					$('.add-slide').fadeOut(250, function(){
+						$(this).text('Add Slide');
+						$(this).fadeIn(250);
+					});
+				}
+			});
+		},
 
 	});
 	return PageView
