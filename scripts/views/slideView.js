@@ -8,7 +8,7 @@ define([
 
 	var SlideView = Backbone.View.extend({	
 
-		slideshowImageTemplate: _.template("<li class='thumbnail span5' style='height:450px; display:inline-block; vertical-align:top; float:none;'><div style='width:100%; height:300px;'><img src='<%= image_url %>' style='border-style:solid; border-color:white;'></div><div class='text-left' style='height:100px; width:350px; white-space:normal;'><hr><p><%= caption %> <small class='muted'><%= credit %></small></p></div></li>"),
+		slideshowImageTemplate: _.template("<li class='thumbnail span5' id='slideshow-image' style='height:450px; display:inline-block; vertical-align:top; float:none;'><div style='width:100%; height:300px;'><img src='<%= image_url %>' style='border-style:solid; border-color:white; max-height:300px;'></div><div class='text-left' style='height:100px; width:350px; white-space:normal;'><hr><p><%= caption %> <small class='muted'><%= credit %></small></p></div></li>"),
 
 		initialize: function(options){
 			this.attrs = options.slideAttrs; // Get the Slide information from options
