@@ -1,16 +1,25 @@
-<!-- SLIDESHOW SLIDE -->
 <div class='slideshow-slide container span12' style='padding-left:10px; padding-right:10px;'>
 	<h3 class='muted text-right'>Slideshow</h3>
+	<a class='btn pull-right addSlideshowSlideItem' id='<%=slide_count%>'>Add Item</a>
 	<div class='row span12 text-center' style='padding-top:20px; margin:0; auto'>
-		<ul id='image-pane span12' style='white-space:nowrap !important; overflow-x:auto;' >
-			<%= list_elements %>
+		<ul id='image-pane<%= slide_count %>' style='white-space:nowrap !important; overflow-x:auto;' >
+			<li class='thumbnail span5' id='slideshow-image' style='height:450px; display:inline-block; vertical-align:top; float:none;'>
+				<div style='width:100%; height:300px;'>
+					<img src='http://placehold.it/300x300' style='border-style:solid; border-color:white; max-height:300px;'>
+				</div>
+				<div class='text-left' style='height:100px; width:350px; white-space:normal;'>
+					<hr>
+					<input type='text' class='span4' id='left-credit' placeholder='Photo Credit'></input><br>
+					<textarea rows='2' class="span4" id='left-caption' type="text" placeholder="Caption this image"></textarea>
+				</div>
+			</li>
 		</ul>
 	</div>
 	<div class='row span12' style="margin:0; auto">
-		<div class='row span12'>
-			<h3 class='lead'>Description</h3>
-			<p><%= description %></p>
-		</div>
+		<form style='margin:0 auto'>
+			<label class="lead">Description</label>
+			<textarea rows='3' class="span12" id='description' type="text" placeholder="Enter a description for the slide"></textarea>
+		</form>
 	</div>
 </div>
 

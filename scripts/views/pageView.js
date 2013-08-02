@@ -12,11 +12,12 @@ define([
 	'collections/storyCollection',
 	'collections/slideCollection',
 	'models/story_model',
+	'text!templates/create-SlideshowItemSlideItem.html',
 ],
 // <<<<<<< HEAD
 // function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, SlideCollection, Story_Model){
 // =======
-function(StoryView, StoryListView, CreateStoryView, CreateSlideView, StoryModel, SlideModel, StoryCollection, SlideCollection, Story_Model){
+function(StoryView, StoryListView, CreateStoryView, CreateSlideView, StoryModel, SlideModel, StoryCollection, SlideCollection, Story_Model,SlideshowItemSlideItemTemplate){
 // >>>>>>> e6356b713dc7cd6728ee1cfc1dd48cf59dc59bf7
 	var PageView = Backbone.View.extend({
 		tagName: 'div',
@@ -24,18 +25,14 @@ function(StoryView, StoryListView, CreateStoryView, CreateSlideView, StoryModel,
 		
 		id: 'page',
 
+		slideCount: 0,
+
 		view: {},
 
 		events:{
 			"click .storyListItem" : "view_story",
 			"click .addStory" : "addStory",
 			"click #add-slide": "configSlide",
-			"click .newSlide" : "addSlide",
-			"resize": "test"
-		},
-
-		test: function(){
-			console.log('resize');
 		},
 
 		initialize: function(options){
@@ -52,6 +49,7 @@ function(StoryView, StoryListView, CreateStoryView, CreateSlideView, StoryModel,
 				function(ev){
 					self.addSlide(ev);
 				});
+
 		},
 
 		storyListView : function(){
@@ -108,7 +106,6 @@ function(StoryView, StoryListView, CreateStoryView, CreateSlideView, StoryModel,
 				},
 				success: function(model, response){
 					var storyData = model;
-					console.log('Returned Story:', storyData);
 					//console.log(StoryView);
 					var storyView = new StoryView({model:storyData});
 					self.view = storyView.render();
@@ -121,15 +118,12 @@ function(StoryView, StoryListView, CreateStoryView, CreateSlideView, StoryModel,
 		},
 
 		addStory: function(){
-			console.log("ADD STORY");
 			var storyView = new CreateStoryView().render();
 			this.view.remove();
 			this.view = storyView;
-			console.log(this.view);
 			this.render();
 			$('.slide-selection-nav li:gt(1)').hide();
 			$('#add-slide').click(function(){
-				console.log('clicked add slide');
 				var slideChoices = $('.slide-selection-nav li:gt(1)');
 				slideChoices.toggle('slow', function(){
 					var display = slideChoices.css("display");
@@ -151,7 +145,7 @@ function(StoryView, StoryListView, CreateStoryView, CreateSlideView, StoryModel,
 		},
 
 		addSlide: function(ev){
-			console.log(ev.target.textContent);
+			var self = this;
 			var slideChoices = $('.slide-selection-nav li:gt(1)');
 			slideChoices.toggle('slow', function(){
 				var display = slideChoices.css("display");
@@ -168,14 +162,29 @@ function(StoryView, StoryListView, CreateStoryView, CreateSlideView, StoryModel,
 					});
 				}
 			});
-			var newSlide = new CreateSlideView({'slide_type': ev.target.textContent}).render();
-			console.log(newSlide);
-			console.log($("#slides"));
+			var newSlide = new CreateSlideView({'slide_type': ev.target.textContent, 'slide_count': this.slideCount}).render();
 			$("#slides").append(newSlide);
+			this.slideCount += 1;
+			//handle adding items to slideshow slides
+			if(ev.target.textContent == 'Slideshow'){
+				$(".addSlideshowSlideItem").click(
+					function(ev){
+						console.log('ev');
+						console.log(ev.currentTarget.id);
+						self.addSlideshowSlideItem(ev.currentTarget.id);
+					});
+			}
+		},
+
+		addSlideshowSlideItem: function(id){
+			console.log('success');
+			var html = _.template(SlideshowItemSlideItemTemplate.replace(/(\r\n|\n|\r)/gm,""));
+			console.log(html);
+			console.log($("#image-pane"+id))
+			$("#image-pane"+id).append(html);
 		},
 
 		configSlide: function(){
-			console.log('clicked add slide');
 			var slideChoices = $('.slide-selection-nav li:gt(1)');
 			slideChoices.toggle('slow', function(){
 				var display = slideChoices.css("display");
