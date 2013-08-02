@@ -17,7 +17,7 @@ define([
 	var StoryView = Backbone.View.extend({
 		
 		id: 'story',
-		tagname: 'div',
+		tagName: 'div',
 		className: 'container',
 
 		initialize: function(options){

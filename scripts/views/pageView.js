@@ -5,8 +5,8 @@
 define([
 	'views/storyView',
 	'views/storyListView',
-	//'views/createStoryView',
-	//'views/createSlideView',
+	'views/createStoryView',
+	'views/createSlideView',
 	'models/story',
 	'models/slide',
 	'collections/storyCollection',
@@ -16,7 +16,7 @@ define([
 // <<<<<<< HEAD
 // function(StoryView, StoryListView, StoryModel, SlideModel, StoryCollection, SlideCollection, Story_Model){
 // =======
-function(StoryView, StoryListView, /*CreateStoryView, CreateSlideView,*/ StoryModel, SlideModel, StoryCollection, SlideCollection, Story_Model){
+function(StoryView, StoryListView, CreateStoryView, CreateSlideView, StoryModel, SlideModel, StoryCollection, SlideCollection, Story_Model){
 // >>>>>>> e6356b713dc7cd6728ee1cfc1dd48cf59dc59bf7
 	var PageView = Backbone.View.extend({
 		tagName: 'div',
@@ -168,7 +168,9 @@ function(StoryView, StoryListView, /*CreateStoryView, CreateSlideView,*/ StoryMo
 					});
 				}
 			});
-			var newSlide = new CreateSlideView({'type': ev.target.textContent.toLowerCase()}).render();
+			var newSlide = new CreateSlideView({'slide_type': ev.target.textContent}).render();
+			console.log(newSlide);
+			console.log($("#slides"));
 			$("#slides").append(newSlide);
 		},
 
