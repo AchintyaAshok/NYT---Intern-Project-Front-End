@@ -1,0 +1,48 @@
+
+<div class='row' id='top-stuff'>
+	<div class="page-header span12" style="padding-top:30px;">
+		<h1 class='pull-left'>Create Story</h1>
+		<h1><button class='btn btn-primary btn-large pull-right'>Submit</button></h1>
+	</div>	
+</div>
+
+<div class="row" style="margin:0; padding:0;">
+	<!-- Cover photo -->
+	<div class="thumbnails span6">
+		<img id="addPhoto" src="http://www.catlitteruklimited.co.uk/assets/imgs/catInGrass.jpg" onclick="getFilePathFromDialog();" style="border-style:solid; border-width:3px; border-color:white;">
+		<input type="file" id="fileBrowser" name="fileBrowser" style="visibility:hidden; display:none;" multiple/>
+	</div>
+
+	<!-- Headline and author -->
+    <div class="span6">
+    	<form>
+    		<label class="lead">Headline</label>
+	    	<input class="span6" type="text" placeholder="Story Headline goes here"></input>
+			<hr>
+			<label class="lead">Author</label>
+	    	<input class="span3" type="text" placeholder="First name"></input>
+	    	<input class="span3" type="text" placeholder="Last name"></input>
+	    </form>
+	</div>
+</div>
+
+<!-- Description -->
+<div class="row span12" style="margin:0; padding:0;">
+    <form>
+    	<br>
+    	<label class="lead">Summary</label>
+    	<textarea rows="4" class="span12"></textarea>
+    </form>
+</div>
+
+<!-- THIS IS WHERE NEW SLIDES GET APPENDED -->
+<div class='row span12 slide-collection' style='margin:0 auto'>
+	<div class="page-header span12" style="padding-top:30px;">
+		<h2 class='pull-left'>Slides</h2>
+		<div id="slides">
+		</div>
+	</div>
+</div>
+
+<div id="bottomNavBar">
+</div>
